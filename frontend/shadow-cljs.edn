@@ -1,0 +1,36 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/main"
+  "src/test"]
+
+ :dependencies
+ [[com.lambdaisland/glogi "1.1.144"]]
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "js"
+
+        :build-hooks [(shadow.cljs.build-report/hook
+                       {:output-to "report.html"})
+                      (shadow.html/copy-file "src/index.html" "public/index.html")]
+        :compiler-options {:infer-externs :auto}
+
+        :module-loader true
+        :module-hash-names true
+        :modules {:shared
+                  {:entries [cljs.core]}
+                  :main
+                  {:entries [runic.core]
+                   :depends-on #{:shared}}}
+
+        :dev {:modules {:inspector
+                        {:entries [runic.dev.inspector]
+                         :depends-on #{:shared}}
+                        :test-scene
+                        {:entries [runic.dev.scene]
+                         :depends-on #{:shared}}}}
+
+        :devtools
+        {:http-root "public"
+         :http-port 3000}}}}

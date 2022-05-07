@@ -1,0 +1,6 @@
+node_modules/
+.shadow-cljs
+.calva
+public/js
+public/index.html
+report.html

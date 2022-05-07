@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "shadow-cljs watch app",
+    "build": "shadow-cljs release app"
+  },
+  "devDependencies": {
+    "@babylonjs/inspector": "^5.4.0",
+    "shadow-cljs": "2.18.0"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^5.4.0",
+    "@babylonjs/materials": "^5.4.0"
+  }
+}
